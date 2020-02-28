@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_28_043811) do
+ActiveRecord::Schema.define(version: 2020_02_28_115619) do
+
+  create_table "orders", force: :cascade do |t|
+    t.string "customer_name"
+    t.string "uuid"
+    t.integer "warehouse_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["warehouse_id"], name: "index_orders_on_warehouse_id"
+  end
 
   create_table "products", force: :cascade do |t|
     t.string "sku"
@@ -18,6 +27,24 @@ ActiveRecord::Schema.define(version: 2020_02_28_043811) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["sku"], name: "index_products_on_sku", unique: true
+  end
+
+  create_table "stocks", force: :cascade do |t|
+    t.integer "count"
+    t.integer "product_id"
+    t.integer "warehouse_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_stocks_on_product_id"
+    t.index ["warehouse_id"], name: "index_stocks_on_warehouse_id"
+  end
+
+  create_table "warehouses", force: :cascade do |t|
+    t.string "street"
+    t.string "city"
+    t.string "province"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
