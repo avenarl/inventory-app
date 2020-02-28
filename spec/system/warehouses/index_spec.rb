@@ -18,7 +18,7 @@ RSpec.describe 'Index of all Warehouses page', type: :system do
     expect(page).to have_column_for('street', value: 'Tabora', record: warehouse)
     expect(page).to have_column_for('city', value: 'Manila', record: warehouse)
     expect(page).to have_column_for('province', value: 'NCR', record: warehouse)
-    expect(page).to have_actions_of('Show', path: "/warehouses/#{warehouse.id}", record: warehouse)
+#    expect(page).to have_actions_of('Show', path: "/warehouses/#{warehouse.id}", record: warehouse)
   end
 
   private
