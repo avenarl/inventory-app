@@ -5,6 +5,7 @@ RSpec.describe 'Shows the Warehouse page', type: :system do
     warehouse = create(:warehouse, street: 'Tabora', city: 'Manila', province:
     'NCR')
 
+    sign_in_as_user
     visit "/warehouses/#{warehouse.id}"
 
     expect(page).to have_attribute_for('street', value: 'Tabora', record: warehouse)
