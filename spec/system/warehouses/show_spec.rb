@@ -28,3 +28,10 @@ RSpec.describe 'Shows the Warehouse page', type: :system do
     have_css("#warehouse--#{record.id}_#{name}", text: value)
   end
 end
+
+#todo
+#Show all available products for a warehouse with inventory count
+# Show all warehouses in products with inventory count
+# inventory count = stock count - order items quantity
+# warehouse, add inventory inside show
+#practice
