@@ -29,5 +29,10 @@ RSpec.describe Product, type: :model do
 
      #   expect(product.valid?).to eq(false)
      # end
+     describe "associations" do
+       subject(:product) { create(:product) }
 
+    it { is_expected.to have_many(:stocks) }
+    it { is_expected.to have_many(:warehouses) }
+ end
 end
