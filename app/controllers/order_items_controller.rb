@@ -2,13 +2,21 @@ class OrderItemsController < AdminController
   before_action :set_order
 
   def create
-    @order_item = @order.order_items.build(order_items_params)
+    @order_item = @order.order_items.find_or_initialize_by(product_id: order_items_params[:product_id].to_i)
+    if @order_item.new_record?
+      flash.notice = "Successfully added order item!"
+
+      @order_item.quantity = order_items_params[:quantity].to_i
+    else
+      flash.notice = "Successfully added order item!"
+      @order_item.quantity += order_items_params[:quantity].to_i
+    end
 
     @order_item.save!
 
     redirect_to order_path(@order)
   end
-
+end
   def destroy
     OrderItem.find(params[:id]).destroy!
 
